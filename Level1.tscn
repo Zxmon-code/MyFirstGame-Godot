@@ -1,0 +1,85 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Object scenes/Player.tscn" type="PackedScene" id=1]
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0.218905, 0.964103 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.207031, 0.202179, 0.202179, 1 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 356, 32 )
+
+[node name="Level1" type="Node2D"]
+position = Vector2( -156, 6 )
+
+[node name="floor" type="StaticBody2D" parent="."]
+position = Vector2( 895, 578 )
+scale = Vector2( 2.12, 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="floor"]
+position = Vector2( 3.30188, 2 )
+scale = Vector2( -0.348634, 62.4082 )
+texture = SubResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
+position = Vector2( 1.41508, 2 )
+shape = SubResource( 2 )
+
+[node name="floor2" type="StaticBody2D" parent="."]
+position = Vector2( 983, 229 )
+scale = Vector2( 0.512439, 11.36 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="floor2"]
+position = Vector2( 3.30188, 2 )
+scale = Vector2( -0.348634, 62.4082 )
+texture = SubResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor2"]
+position = Vector2( 1.41508, 2 )
+shape = SubResource( 2 )
+
+[node name="floor3" type="StaticBody2D" parent="."]
+position = Vector2( 1383, 42 )
+scale = Vector2( -0.089299, 13.8164 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="floor3"]
+position = Vector2( 3.30188, 2 )
+scale = Vector2( -0.348634, 62.4082 )
+texture = SubResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor3"]
+position = Vector2( 1.41508, 2 )
+shape = SubResource( 2 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 498, 64 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2( 0, 7 )
+current = true
+limit_bottom = 600
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+editor_draw_limits = true
