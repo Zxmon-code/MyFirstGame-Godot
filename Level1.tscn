@@ -17,7 +17,7 @@ position = Vector2( -156, 6 )
 
 [node name="floor" type="StaticBody2D" parent="."]
 position = Vector2( 895, 578 )
-scale = Vector2( 2.12, 1 )
+scale = Vector2( 15.52, 1 )
 __meta__ = {
 "_edit_group_": true
 }
