@@ -15,9 +15,9 @@ const DASHSPEED = 1600
 var candash = false
 var facing_direction = null
 var dashing = false
-onready var timer = get_node("Timer")
+
 const DASHCOOLDOWN = .5
-var dashtimertimeout = true
+
 
 
 
@@ -30,7 +30,7 @@ var dashtimertimeout = true
 #		velocity.x = 0
 #	velocity.x = velocity.clamped(1*speed).x
 
-#Better Input(using action strength
+#Better Input(using action strength)
 func get_horizontal_input(delta):
 	if !dashing:
 		horizontal_speed = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
@@ -67,15 +67,14 @@ func jump_without_player_input():
 	canjump = false
 	
 func dash():
-	if Input.is_action_just_pressed("dash") and candash and dashtimertimeout:
-		dashtimertimeout = false
+	if Input.is_action_just_pressed("dash") and candash:
 		velocity.y = 0
 		velocity.x = facing_direction*DASHSPEED
 		candash=false
 		dashing=true
 		yield(get_tree().create_timer(.2), "timeout")
 		dashing=false
-		timer.start(DASHCOOLDOWN)
+		
 		
 
 func _physics_process(delta):
@@ -97,18 +96,12 @@ func _physics_process(delta):
 		facing_direction = -1
 	
 	dash()
-	var vel0 = 0
 	if dashing:
-		if vel0 < 6:
-			velocity.y = 0
-			vel0 += 1
-		elif vel0 == 6:
-			vel0 = 0
+		velocity.y = 0
 		
 	
 	velocity = move_and_slide(velocity, Vector2.UP)
 	
 
 
-func _on_Timer_timeout():
-	dashtimertimeout = true
+
